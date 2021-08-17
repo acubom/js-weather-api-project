@@ -5,22 +5,22 @@ const getData = async () => {
     return response.data
 }
 
-const button = document.createElementById('search');
-button.addEventListener('click', displayData);
-
 const displayData = async (event) => {
     event.preventDefault();
     const data = await getData();
     //High temp
-    let high = document.createElementById('high');
-    high.innerHTML = (math.ceil(data.main.temp_max)) + "F";
+    let high = document.getElementById('high');
+    high.innerHTML = (Math.ceil(data.main.temp_max)) + "F";
     //Low temp
-    let low = document.createElementById('low');
-    low.innerHTML =(math.ceil(data.main.temp_min)) + "F";
+    let low = document.getElementById('low');
+    low.innerHTML =(Math.ceil(data.main.temp_min)) + "F";
     //Forecast
-    let forecast = document.createElementById('forecast');
+    let forecast = document.getElementById('forecast');
     forecast.innerHTML = data.weather[0].main;
     //Humidity
-    let humidity = document.createElementById('humidity');
-    humidity.innerHTML = data.main. humidity + "%";    
+    let humidity = document.getElementById('humidity');
+    humidity.innerHTML = data.main.humidity + "%";    
 }
+
+const button = document.getElementById('search');
+button.addEventListener('click', displayData);
